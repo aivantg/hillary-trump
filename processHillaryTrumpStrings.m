@@ -1,4 +1,4 @@
-function wordContainer = processTrumpHillaryStrings(trumpString, hillaryString)
+function wordContainer = processHillaryTrumpStrings(hillaryString, trumpString)
 
 % ========================== Preprocess Email ===========================
 
@@ -11,7 +11,7 @@ function wordContainer = processTrumpHillaryStrings(trumpString, hillaryString)
 
 % Lower case
 trumpString = lower(trumpString);
-hillaryString = lower(hillaryString)
+hillaryString = lower(hillaryString);
 
 % Strip all HTML
 % Looks for any expression that starts with < and ends with > and replace
@@ -29,7 +29,7 @@ trumpString = regexprep(trumpString, '[$]+', 'dol');
 hillaryString = regexprep(hillaryString, '[$]+', 'dol');
 
 % Create empty word container
-wordContainer = containers.map([], []);
+wordContainer = containers.Map();
 
 % ========================== Tokenize Email ===========================
 
@@ -50,7 +50,7 @@ while ~isempty(trumpString) || ~isempty(hillaryString)
                 [' @$/#.-:&*+=[]?!(){},''">_<;%' char(10) char(13)]);
     else
         [str, hillaryString] = ...
-            strtok(hillaryString), ...
+            strtok(hillaryString, ...
                 [' @$/#.-:&*+=[]?!(){},''">_<;%' char(10) char(13)]);
     end;
 
@@ -70,14 +70,14 @@ while ~isempty(trumpString) || ~isempty(hillaryString)
 
     % Look up the word in the word container
     try countVector = wordContainer(str); % Slightly concerned whether this would work.
-    catch countVector = [0, 0];
+    catch countVector = [0 0];
     end;
 
     % Update the Count
     if isTrump
-        countVector = [countVector(1)++, countVector(2)];
+        countVector(2) = countVector(2)+1;
     else
-        countVector = [countVector(1), countVector(2)++];
+        countVector(1) = countVector(1)+1;
     end;
 
     % Update the Container

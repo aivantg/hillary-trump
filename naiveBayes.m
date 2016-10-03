@@ -1,3 +1,3 @@
 
-
-wordContainer = processTrumpHillaryStrings(trumpString, hillaryString)
+[hillaryString trumpString] = importData('debate.txt');
+wordContainer = processHillaryTrumpStrings(hillaryString, trumpString)
