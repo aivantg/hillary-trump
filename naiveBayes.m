@@ -1,0 +1,3 @@
+
+
+wordContainer = processTrumpHillaryStrings(trumpString, hillaryString)
