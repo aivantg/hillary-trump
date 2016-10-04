@@ -1,0 +1,1 @@
+setupTrumpinessClassifier('debate.txt')

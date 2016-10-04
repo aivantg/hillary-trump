@@ -1,3 +1,4 @@
 function checkTrumpiness(str)
-  wordContainer
-end;
+  global wordContainer;
+  disp(wordContainer(str));
+end
