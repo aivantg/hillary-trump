@@ -10,23 +10,8 @@ function wordContainer = processHillaryTrumpStrings(hillaryString, trumpString)
 % email_contents = email_contents(hdrstart(1):end);
 
 % Lower case
-trumpString = lower(trumpString);
-hillaryString = lower(hillaryString);
-
-% Strip all HTML
-% Looks for any expression that starts with < and ends with > and replace
-% and does not have any < or > in the tag it with a space
-trumpString = regexprep(trumpString, '<[^<>]+>', ' ');
-hillaryString = regexprep(hillaryString, '<[^<>]+>', ' ');
-
-% Handle Numbers
-% Look for one or more characters between 0-9
-trumpString = regexprep(trumpString, '[0-9]+', 'num');
-hillaryString = regexprep(hillaryString, '[0-9]+', 'num');
-
-% Handle $ sign
-trumpString = regexprep(trumpString, '[$]+', 'dol');
-hillaryString = regexprep(hillaryString, '[$]+', 'dol');
+trumpString = processString(trumpString);
+hillaryString = processString(hillaryString);
 
 % Create empty word container
 wordContainer = containers.Map();
@@ -34,7 +19,7 @@ wordContainer = containers.Map();
 % ========================== Tokenize Email ===========================
 
 % Output the email to screen as well
-fprintf('\n==== Processed String ====\n\n');
+fprintf('\n==== Processing String ====\n\n');
 
 % Process file
 l = 0;
@@ -42,7 +27,7 @@ l = 0;
 while ~isempty(trumpString) || ~isempty(hillaryString)
 
     isTrump = ~isempty(trumpString);
-    
+
     % Tokenize and also get rid of any punctuation
     if isTrump
         [str, trumpString] = ...
@@ -86,6 +71,6 @@ while ~isempty(trumpString) || ~isempty(hillaryString)
 end
 
 % Print footer
-fprintf('\n\n=========================\n');
+fprintf('\n\n=======Processed!=======\n');
 
 end

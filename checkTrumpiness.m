@@ -1,3 +1,3 @@
 function checkTrumpiness(str)
-  wordContainer
+  words = extractWords(str);
 end;
