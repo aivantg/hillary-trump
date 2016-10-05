@@ -16,8 +16,8 @@ function checkTrumpiness(str)
     trumpProbs(i) = countVector(2)/total;
   end
 
-  hillaryness = naiveBayes(hillaryProbs);
-  trumpiness = naiveBayes(trumpProbs);
+  hillaryness = prod(hillaryProbs);
+  trumpiness = prod(trumpProbs);
 
   fprintf("Trumpiness: %f\n Hillaryness: %f\n\n");
   if hillaryness > trumpiness
