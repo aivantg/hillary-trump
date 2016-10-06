@@ -1,4 +1,9 @@
-function cT(str)
+function cT(str, showDebug)
 global trumpiness hillaryness wordContainer;
-checkTrumpiness(str)
+if ~exist('showDebug', 'var')
+  showDebug = false;
+end
+  checkTrumpiness(str, showDebug);
+
+
 end
