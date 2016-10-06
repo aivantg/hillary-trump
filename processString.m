@@ -13,4 +13,4 @@ function [str] = processString(string)
 
   % Handle $ sign
   str = regexprep(string, '[$]+', 'dol');
-end;
+end
