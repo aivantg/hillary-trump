@@ -1,5 +1,5 @@
 function checkTrumpiness(str)
-  global hillaryTotal, trumpTotal;
+  global hillaryTotal trumpTotal;
   words = extractWords(str);
   fprintf('Printing Words');
   disp(words);
