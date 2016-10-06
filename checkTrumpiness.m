@@ -1,4 +1,5 @@
 function checkTrumpiness(str)
+  global hillaryTotal, trumpTotal;
   words = extractWords(str);
   fprintf('Printing Words');
   disp(words);
@@ -12,14 +13,20 @@ function checkTrumpiness(str)
     if(isKey(wordContainer, word))
         countVector = wordContainer(char(word));
         disp(countVector);
+        if(countVector(1) == 0)
+            countVector(1) = countVector(2)/10;
+        end
+        if(countVector(2) == 0)
+            countVector(2) = countVector(1)/10;
+        end
         total = countVector(1) + countVector(2);
         hillaryProbs(i) = countVector(1)/total;
         trumpProbs(i) = countVector(2)/total;
     end
   end
 
-  hillaryness = prod(hillaryProbs);
-  trumpiness = prod(trumpProbs);
+  hillaryness = prod(hillaryProbs)/hillaryTotal;
+  trumpiness = prod(trumpProbs)/trumpTotal;
   disp(trumpiness);
   disp(hillaryness);
   

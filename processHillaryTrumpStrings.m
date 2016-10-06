@@ -1,5 +1,9 @@
 function wordContainer = processHillaryTrumpStrings(hillaryString, trumpString)
 
+global trumpTotal hillaryTotal;
+trumpTotal = 0;
+hillaryTotal = 0;
+
 % ========================== Preprocess Email ===========================
 
 % Find the Headers ( \n\n and remove )
@@ -61,8 +65,10 @@ while ~isempty(trumpString) || ~isempty(hillaryString)
     % Update the Count
     if isTrump
         countVector(2) = countVector(2)+1;
+        trumpTotal = trumpTotal+1;
     else
         countVector(1) = countVector(1)+1;
+        hillaryTotal = hillaryTotal+1;
     end;
 
     % Update the Container
