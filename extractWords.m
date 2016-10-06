@@ -22,6 +22,6 @@ function [words] = extractWords(str)
     numWords = numWords + 1;
     words(numWords) = {regexprep(stemmedStr, '[^a-zA-Z0-9]', '')};
   end
-  %fprintf('Words: ');
-  %disp(words);
+  fprintf('Words: ');
+  disp(words);
 end
